@@ -1,0 +1,765 @@
+﻿<html lang="es"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - Volocuernitos</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        :root {
+            --primary: #FF6B35;
+            --secondary: #FFD151;
+            --accent: #FF4081;
+            --dark: #333333;
+            --light: #F5F5F5;
+        }
+        
+        body {
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            padding: 0.5rem 0;
+            background-color: rgba(255, 107, 53, 0.95);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .logo h1 {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            position: relative;
+            padding: 5px 0;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background-color: var(--secondary);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        /* Page Banner */
+        .page-banner {
+            height: 50vh;
+            min-height: 300px;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/api/placeholder/1200/600') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 78px;
+        }
+        
+        .page-banner h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeInDown 1s forwards;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .page-banner p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            animation: fadeIn 1s forwards 0.5s;
+            opacity: 0;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        
+        /* Product Detail Section */
+        .product-details {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            display: inline-block;
+            position: relative;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 4px;
+            background-color: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .product-card {
+            display: flex;
+            margin-bottom: 100px;
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s ease;
+        }
+        
+        .product-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .product-card:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .product-image {
+            flex: 1;
+            min-height: 400px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            flex: 1;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--secondary);
+            color: var(--dark);
+            font-weight: 600;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            z-index: 10;
+            box-shadow: 0 4px 10px rgba(255, 209, 81, 0.5);
+        }
+        
+        .product-card:nth-child(even) .product-badge {
+            right: auto;
+            left: 20px;
+        }
+        
+        .product-name {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+        
+        .product-description {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        
+        .product-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .ingredients-title {
+            font-size: 1.3rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .ingredients-title::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background-color: var(--secondary);
+            bottom: -5px;
+            left: 0;
+            border-radius: 2px;
+        }
+        
+        .ingredients-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .ingredients-list li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 30px;
+            color: #555;
+        }
+        
+        .ingredients-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .product-btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            width: max-content;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s;
+            z-index: -1;
+        }
+        
+        .product-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.5);
+        }
+        
+        .product-btn:hover:before {
+            left: 100%;
+        }
+        
+        /* Nutrition Facts */
+        .nutrition-facts {
+            margin-top: 30px;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #fafafa;
+        }
+        
+        .nutrition-facts h4 {
+            margin-bottom: 15px;
+            color: var(--dark);
+            font-size: 1.2rem;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+        
+        .nutrition-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        
+        .nutrition-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .nutrition-item span:first-child {
+            color: #666;
+        }
+        
+        .nutrition-item span:last-child {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-col h4 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .footer-col p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .social-link i {
+            font-size: 1.2rem;
+            color: white;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+            list-style: none;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        .footer-links a::before {
+            content: "›";
+            position: absolute;
+            left: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 20px;
+        }
+        
+        .footer-links a:hover::before {
+            color: var(--primary);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-bottom p {
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .product-card, .product-card:nth-child(even) {
+                flex-direction: column;
+            }
+            
+            .product-image {
+                height: 300px;
+            }
+            
+            .product-info {
+                padding: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            nav ul {
+                position: absolute;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                background-color: var(--primary);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                transition: all 0.3s ease;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.active {
+                left: 0;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .page-banner h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .product-name {
+                font-size: 1.8rem;
+            }
+            
+            .nutrition-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-banner h1 {
+                font-size: 2rem;
+            }
+            
+            .page-banner p {
+                font-size: 1rem;
+            }
+            
+            .product-info {
+                padding: 25px 20px;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .product-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <img src="logo.jpg" alt="Volocuernitos Logo">
+                <h1>Volocuernitos</h1>
+            </div>
+            <div class="menu-toggle">☰</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="pro.html">Productos</a></li>
+                    <li><a href="cont.html">Contacto</a></li>
+                    <li><a href="sos.html">Socios</a></li>
+                    <li><a href="pre.html">Preguntas</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="container">
+            <h1>Nuestros Productos</h1>
+            <p>Descubre nuestros deliciosos cuernitos, elaborados con los mejores ingredientes y recetas exclusivas.</p>
+        </div>
+    </section>
+
+    <!-- Product Details Section -->
+    <section class="product-details">
+        <div class="container">
+            <div class="section-title">
+                <h2>MENÚ CUERNITOS</h2>
+            </div>
+            
+            <!-- Product 1: Jamón con Tocino -->
+            <div class="product-card">
+                <span class="product-badge">Más vendido</span>
+                <div class="product-image">
+                    <img src="j.jpeg" alt="Cuernito de Jamón con Tocino">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Cuernito de Jamón con Tocino</h3>
+                    <p class="product-description">
+                        Nuestro cuernito más solicitado y el primero que se nos ocurrio hacer ya que el jamon en los cuernitos es lo mas tradicional                    </p>
+                    <div class="product-price">$25.00</div>
+                    
+                    <h4 class="ingredients-title">Ingredientes</h4>
+                    <ul class="ingredients-list">
+                        <li>Pan horneado de masa hojaldrada</li>
+                        <li>Aderezo especial de la casa</li>
+                        <li>Jamón picado</li>
+                        <li>Tocino crujiente</li>
+                        <li>Queso americano</li>
+                    </ul>
+                    
+                    
+                    <a href="cont.html" class="product-btn">Ordenar ahora</a>
+                </div>
+            </div>
+            
+            <!-- Product 2: Pollo Picante -->
+            <div class="product-card">
+                <span class="product-badge">Nuevo</span>
+                <div class="product-image">
+                    <img src="pollo.jpeg" alt="Cuernito de Pollo Picante">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Cuernito de Pollo Picante</h3>
+                    <p class="product-description">
+                        A causa de la gran demanda y de que los clientes nos pedian nuevos sabores decidimos escucharlos y hacer la reseta de nuestros cuernitos de pollo guisado.               </p>
+                    <div class="product-price">$25.00</div>
+                    
+                    <h4 class="ingredients-title">Ingredientes</h4>
+                    <ul class="ingredients-list">
+                        <li>Pan horneado de masa hojaldrada</li>
+                        <li>Aderezo especial de la casa</li>
+                        <li>Pollo desmenuzado</li>
+                        <li>Tomate fresco</li>
+                        <li>Cebolla</li>
+                        <li>Ajo</li>
+                        <li>Chile </li>
+                        <li>Queso americano</li>
+                    </ul>
+                    
+                    
+                    <a href="cont.html" class="product-btn">Ordenar ahora</a>
+                </div>
+            </div>
+            
+            <!-- Call to Action -->
+            <div style="text-align: center; margin-top: 50px;">
+                <h3 style="margin-bottom: 20px; color: var(--dark);">¿Quieres hacer un pedido especial?</h3>
+                <p style="margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    También ofrecemos pedidos especiales para entrega en el CETIS145 
+                    ¡Contáctanos para más información!
+                </p>
+                <a href="cont.html" class="product-btn">Contactar</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h4>Volocuernitos</h4>
+                    <p>Emprendimiento dedicado a la elaboración de cuernitos con recetas únicas y deliciosas.</p>
+
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul class="footer-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="pro.html">Productos</a></li>
+                    <li><a href="cont.html">Contacto</a></li>
+                    <li><a href="sos.html">Socios</a></li>
+                    <li><a href="pre.html">Preguntas</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contacto</h4>
+                    <ul class="footer-links">
+                        <li><a>Email: volocuernitos@gmail.com</a></li>
+                        <li><a>Teléfono: +52 921 470 7640</a></li>
+                        <li><a>Dirección: CETIS 145 MTZ de la Torre, Ver.</a></li>
+                        <li><a>Horario: Lun-Vie 8:00am -14:00pm</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 Volocuernitos - Todos los derechos reservados | Emprendimiento CETIS145</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Script para el menú responsive
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('active');
+        });
+        
+        // Script para cambiar el header al hacer scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Script para animación de elementos al hacer scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const productCards = document.querySelectorAll('.product-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            productCards.forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+
+</body>
+</html>

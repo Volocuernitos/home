@@ -1,0 +1,356 @@
+﻿<!DOCTYPE html>
+
+<html lang="es"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS.css">
+    <title>Nuestro Equipo - Volocuernitos</title>
+    <style>
+        /* Estilos específicos para la página de socios */
+        .team-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .team-member {
+            width: 300px;
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .member-image {
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .team-member:hover .member-image img {
+            transform: scale(1.05);
+        }
+        
+        .member-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .member-name {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+        
+        .member-role {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+        
+        .member-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .social-button {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--dark);
+        }
+        
+        .social-button:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .team-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            color: var(--dark);
+        }
+        
+        .team-intro h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .team-intro p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        .section-divider {
+            height: 4px;
+            width: 60px;
+            background-color: var(--primary);
+            margin: 0 auto 30px;
+            border-radius: 2px;
+        }
+        
+        @media (max-width: 768px) {
+            .team-member {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="scrolled">
+        <div class="container nav-container">
+            <div class="logo">
+                <img src="logo.jpg" alt="Volocuernitos Logo">
+                <h1>Volocuernitos</h1>
+            </div>
+            <div class="menu-toggle">☰</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="pro.html">Productos</a></li>
+                    <li><a href="cont.html">Contacto</a></li>
+                    <li><a href="sos.html">Socios</a></li>
+                    <li><a href="pre.html">Preguntas</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" style="height: 50vh;">
+        <div class="hero-content">
+            <h2>Nuestros Socios</h2>
+            <p>Conoce a las personas talentosas detrás de Volocuernitos.</p>
+        </div>
+        <div class="scroll-down">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M7.41,8.59L12,13.17l4.59-4.58L18,10l-6,6l-6-6L7.41,8.59z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <section class="team" id="team">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestros equipo</h2>
+            </div>
+            
+            <div class="team-intro" style="opacity: 1; transform: translateY(0px); transition: 0.6s ease-out;">
+                <h3>El Equipo Detrás del Éxito</h3>
+                <div class="section-divider"></div>
+                <p>Somos un grupo de estudiantes emprendedores del CETIS 145 comprometidos con la excelencia y la innovación. 
+                   todo el equipo de Volocuernitos aporta habilidades únicas que nos permiten ofrecerte 
+                   productos de calidad.</p>
+            </div>
+            
+            <div class="team-container">
+                <div class="team-member" style="opacity: 1; transform: translateY(0px); transition: 0.6s ease-out;">
+                    <div class="member-image">
+                        <img src="alex.jpg" alt="Alexander M.P.">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Alexander M.P.</h3>
+                        <p class="member-role">CEO &amp; Finanzas</p>
+                        <p class="member-description">Lidera de la empresa y responsable de las finanzas, para garantizar el crecimiento sostenible del negocio.</p>
+                        <div class="social-buttons">
+
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member" style="opacity: 1; transform: translateY(0px); transition: 0.6s ease-out;">
+                    <div class="member-image">
+                        <img src="zoe.jpg" alt="Zoe C.O.">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Zoe C.O.</h3>
+                        <p class="member-role">Tesorera</p>
+                        <p class="member-description">Responsable del control de ingresos y gastos, asegurando la transparencia financiera del proyecto.</p>
+                        <div class="social-buttons">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-member" style="opacity: 1; transform: translateY(0px); transition: 0.6s ease-out;">
+                    <div class="member-image">
+                        <img src="kev.jpg" alt="Kevin L.P.">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Kevin L.P.</h3>
+                        <p class="member-role">Panadero</p>
+                        <p class="member-description">Panadero responsable de nuestros deliciosos panes con textura esponjosa.</p>
+                        <div class="social-buttons">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-member" style="opacity: 1; transform: translateY(0px); transition: 0.6s ease-out;">
+                    <div class="member-image">
+                        <img src="era.jpeg" alt="Erasmo Iván V.A.">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Erasmo Iván V.A.</h3>
+                        <p class="member-role">Vendedor</p>
+                        <p class="member-description">Encargadode las ventas fuera del CETIS 145.</p>
+                        <div class="social-buttons">
+
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member" style="opacity: 1; transform: translateY(0px); transition: 0.6s ease-out;">
+                    <div class="member-image">
+                        <img src="carloss.jpg" alt="Carlos Uriel R.C.">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Carlos Uriel R.C.</h3>
+                        <p class="member-role">Vendedor</p>
+                        <p class="member-description">Encargado de ventas dentro de la escuela.</p>
+                        <div class="social-buttons">
+
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member" style="opacity: 1; transform: translateY(0px); transition: 0.6s ease-out;">
+                    <div class="member-image">
+                        <img src="karla.jpg" alt="Karla Ivette A.H.">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Karla Ivette A.H.</h3>
+                        <p class="member-role">Cocinera</p>
+                        <p class="member-description">Cocinera estrella de nuestros cuernitos.</p>
+                        <div class="social-buttons">
+
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member" style="opacity: 1; transform: translateY(0px); transition: 0.6s ease-out;">
+                    <div class="member-image">
+                        <img src="abby.jpg" alt="Abigail V.G.">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Abigail V.G.</h3>
+                        <p class="member-role">Cocinera</p>
+                        <p class="member-description">Ayudante de cocina de nuestra cocinera.</p>
+                        <div class="social-buttons">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h4>Volocuernitos</h4>
+                    <p>Emprendimiento dedicado a la elaboración de cuernitos con recetas únicas y deliciosas.</p>
+
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul class="footer-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="pro.html">Productos</a></li>
+                    <li><a href="cont.html">Contacto</a></li>
+                    <li><a href="sos.html">Socios</a></li>
+                    <li><a href="pre.html">Preguntas</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contacto</h4>
+                    <ul class="footer-links">
+                        <li><a>Email: volocuernitos@gmail.com</a></li>
+                        <li><a>Teléfono: +52 921 470 7640</a></li>
+                        <li><a>Dirección: CETIS 145 MTZ de la Torre, Ver.</a></li>
+                        <li><a>Horario: Lun-Vie 8:00am -14:00pm</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 Volocuernitos - Todos los derechos reservados | Emprendimiento CETIS145</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('active');
+        });
+        
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const animElements = document.querySelectorAll('.team-member, .team-intro');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(50px)';
+                el.style.transition = 'all 0.6s ease-out';
+                observer.observe(el);
+            });
+        });
+    </script>
+
+
+</body>
+</html>
