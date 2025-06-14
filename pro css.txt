@@ -1,0 +1,817 @@
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        :root {
+            --primary: #FF6B35;
+            --secondary: #FFD151;
+            --accent: #FF4081;
+            --dark: #333333;
+            --light: #F5F5F5;
+            /* Colores violeta para móviles */
+            --mobile-primary: #8A2BE2;
+            --mobile-secondary: #9370DB;
+            --mobile-accent: #DA70D6;
+            --mobile-dark: #4B0082;
+            --mobile-light: #F0E6FF;
+        }
+        
+        body {
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            padding: 0.5rem 0;
+            background-color: rgba(255, 107, 53, 0.95);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .logo h1 {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            position: relative;
+            padding: 5px 0;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background-color: var(--secondary);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/api/placeholder/1200/800') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s forwards 0.5s;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.5);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .cta-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s;
+            z-index: -1;
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.7);
+        }
+        
+        .cta-btn:hover:before {
+            left: 100%;
+        }
+        
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-20px) translateX(-50%); }
+            60% { transform: translateY(-10px) translateX(-50%); }
+        }
+        
+        .scroll-down svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            display: inline-block;
+            position: relative;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 4px;
+            background-color: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            color: var(--dark);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .about-image {
+            flex: 1;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+        
+        .about-image:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 100px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .products-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            width: 350px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--secondary);
+            color: var(--dark);
+            font-weight: 600;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            z-index: 10;
+            box-shadow: 0 4px 10px rgba(255, 209, 81, 0.5);
+        }
+        
+        .product-image {
+            height: 220px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            padding: 25px;
+        }
+        
+        .product-info h3 {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .product-info p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .product-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 20px;
+        }
+        
+        .product-btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .product-btn:hover {
+            background-color: #ff5421;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-col h4 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .footer-col p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .social-link i {
+            font-size: 1.2rem;
+            color: white;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+            list-style: none;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        .footer-links a::before {
+            content: "›";
+            position: absolute;
+            left: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 20px;
+        }
+        
+        .footer-links a:hover::before {
+            color: var(--primary);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-bottom p {
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .products-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .product-card {
+                width: 100%;
+                max-width: 350px;
+            }
+        }
+        
+        /* TEMA VIOLETA PARA MÓVILES */
+        @media (max-width: 768px) {
+            /* Cambiar colores del body y fondo general */
+            body {
+                background-color: var(--mobile-light);
+            }
+            
+            /* Header con colores violeta */
+            header {
+                background-color: var(--mobile-primary);
+            }
+            
+            header.scrolled {
+                background-color: rgba(138, 43, 226, 0.95);
+            }
+            
+            /* Navegación móvil violeta */
+            .menu-toggle {
+                display: block;
+            }
+            
+            nav ul {
+                position: absolute;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                background-color: var(--mobile-primary);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                transition: all 0.3s ease;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.active {
+                left: 0;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            nav ul li a::after {
+                background-color: var(--mobile-secondary);
+            }
+            
+            /* Hero con tema violeta */
+            .hero {
+                background: linear-gradient(rgba(55, 46, 61, 0.8), rgba(43, 29, 56, 0.6)), url('/api/placeholder/1200/800') center/cover no-repeat;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+                color: var(--mobile-light);
+            }
+            
+            .hero p {
+                color: var(--mobile-light);
+            }
+            
+            /* Botones CTA violeta */
+            .cta-btn {
+                background-color: var(--mobile-accent);
+                box-shadow: 0 4px 15px rgba(218, 112, 214, 0.5);
+            }
+            
+            .cta-btn:hover {
+                background-color: var(--mobile-secondary);
+                box-shadow: 0 6px 20px rgba(147, 112, 219, 0.7);
+            }
+            
+            /* Secciones con fondo violeta claro */
+            .about {
+                background-color: var(--mobile-light);
+            }
+            
+            .products {
+                background-color: #E6D7F0;
+            }
+            
+            /* Títulos de sección violeta */
+            .section-title h2 {
+                font-size: 2rem;
+                color: var(--mobile-dark);
+            }
+            
+            .section-title h2::after {
+                background-color: var(--mobile-primary);
+            }
+            
+            /* Texto about violeta */
+            .about-text h3 {
+                color: var(--mobile-primary);
+            }
+            
+            .about-text p {
+                color: var(--mobile-dark);
+            }
+            
+            /* Cards de productos con tema violeta */
+            .product-card {
+                background-color: white;
+                border: 2px solid var(--mobile-secondary);
+                box-shadow: 0 10px 20px rgba(63, 54, 71, 0.2);
+            }
+            
+            .product-card:hover {
+                box-shadow: 0 15px 30px rgba(56, 51, 61, 0.3);
+                border-color: var(--mobile-primary);
+            }
+            
+            .product-badge {
+                background-color: var(--mobile-secondary);
+                color: white;
+                box-shadow: 0 4px 10px rgba(147, 112, 219, 0.5);
+            }
+            
+            .product-info h3 {
+                color: var(--mobile-dark);
+            }
+            
+            .product-price {
+                color: var(--mobile-primary);
+            }
+            
+            .product-btn {
+                background-color: var(--mobile-primary);
+            }
+            
+            .product-btn:hover {
+                background-color: var(--mobile-dark);
+            }
+            
+            /* Footer violeta */
+            footer {
+                background-color: var(--mobile-dark);
+            }
+            
+            .footer-col h4::after {
+                background-color: var(--mobile-accent);
+            }
+            
+            .footer-links a:hover {
+                color: var(--mobile-accent);
+            }
+            
+            .footer-links a:hover::before {
+                color: var(--mobile-accent);
+            }
+            
+            .social-link:hover {
+                background-color: var(--mobile-primary);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            /* Ajustes adicionales para pantallas muy pequeñas */
+            .hero h2 {
+                font-size: 2rem;
+                color: var(--mobile-light);
+            }
+            
+            .hero p {
+                font-size: 1rem;
+                color: var(--mobile-light);
+            }
+            
+            .cta-btn {
+                display: block;
+                margin: 10px auto;
+                width: 80%;
+                background-color: var(--mobile-accent);
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+                color: var(--mobile-dark);
+            }
+        }
+
+        /* TEMA VIOLETA PARA MÓVILES - PÁGINA DE PRODUCTOS */
+@media (max-width: 768px) {
+    /* Page Banner con tema violeta */
+    .page-banner {
+        background: linear-gradient(rgba(55, 46, 61, 0.8), rgba(43, 29, 56, 0.6)), url('/api/placeholder/1200/600') center/cover no-repeat;
+    }
+    
+    .page-banner h1 {
+        color: var(--mobile-light);
+    }
+    
+    .page-banner p {
+        color: var(--mobile-light);
+    }
+    
+    /* Sección de detalles de productos */
+    .product-details {
+        background-color: var(--mobile-light);
+    }
+    
+    /* Cards de productos detallados con tema violeta */
+    .product-card {
+        background-color: white;
+        border: 2px solid var(--mobile-secondary);
+        box-shadow: 0 10px 30px rgba(63, 54, 71, 0.2);
+    }
+    
+    .product-card:hover {
+        box-shadow: 0 15px 40px rgba(56, 51, 61, 0.3);
+        border-color: var(--mobile-primary);
+    }
+    
+    /* Badge de productos violeta */
+    .product-badge {
+        background-color: var(--mobile-secondary);
+        color: white;
+        box-shadow: 0 4px 10px rgba(147, 112, 219, 0.5);
+    }
+    
+    /* Información de productos */
+    .product-name {
+        color: var(--mobile-dark);
+    }
+    
+    .product-description {
+        color: #666;
+    }
+    
+    .product-price {
+        color: var(--mobile-primary);
+    }
+    
+    /* Título de ingredientes violeta */
+    .ingredients-title {
+        color: var(--mobile-dark);
+    }
+    
+    .ingredients-title::after {
+        background-color: var(--mobile-secondary);
+    }
+    
+    /* Lista de ingredientes */
+    .ingredients-list li::before {
+        color: var(--mobile-primary);
+    }
+    
+    /* Botón de producto violeta */
+    .product-btn {
+        background-color: var(--mobile-primary);
+        box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+    }
+    
+    .product-btn:hover {
+        background-color: var(--mobile-dark);
+        box-shadow: 0 6px 20px rgba(75, 0, 130, 0.5);
+    }
+    
+    /* Datos nutricionales con tema violeta */
+    .nutrition-facts {
+        background-color: #F0E6FF;
+        border: 1px solid var(--mobile-secondary);
+    }
+    
+    .nutrition-facts h4 {
+        color: var(--mobile-dark);
+        border-bottom: 2px solid var(--mobile-secondary);
+    }
+    
+    .nutrition-item span:last-child {
+        color: var(--mobile-dark);
+    }
+}
+
+@media (max-width: 480px) {
+    /* Ajustes adicionales para pantallas muy pequeñas */
+    .page-banner h1 {
+        color: var(--mobile-light);
+    }
+    
+    .page-banner p {
+        color: var(--mobile-light);
+    }
+    
+    .product-name {
+        color: var(--mobile-dark);
+    }
+    
+    .product-btn {
+        background-color: var(--mobile-primary);
+    }
+}
+    </style>
