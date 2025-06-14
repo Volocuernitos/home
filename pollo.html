@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuernito de Pollo Picante - Volocuernitos</title>
+    <link rel="stylesheet" href="CSS.css">
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="Volocuernitos Logo">
+                <h1>Volocuernitos</h1>
+            </div>
+            <div class="menu-toggle">☰</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="pro.html">Productos</a></li>
+                    <li><a href="cont.html">Contacto</a></li>
+                    <li><a href="sos.html">Socios</a></li>
+                    <li><a href="pre.html">Preguntas</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Cuernito de Pollo Picante</h2>
+            <p>Nuestro sabor más intenso con pollo desmenuzado y salsa especial picante que despertará todos tus sentidos.</p>
+        </div>
+        <div class="scroll-down">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M7.41,8.59L12,13.17l4.59-4.58L18,10l-6,6l-6-6L7.41,8.59z"/>
+            </svg>
+        </div>
+    </section>
+
+    <section class="product-detail-section">
+        <div class="container">
+            <div class="product-detail-container">
+                <div class="product-gallery">
+                    <div class="main-image">
+                        <img src="pollo.jpeg" alt="Cuernito de Pollo Picante" id="mainImage">
+                        <span class="product-badge">Nuevo</span>
+                    </div>
+                </div>
+                
+                <div class="product-details">
+                    <h1>Cuernito de Pollo Picante</h1>
+                    <div class="product-rating">
+                        <div class="stars">
+                            <span>★★★★★</span>
+                        </div>
+                        <span class="rating-text">(4.8/5) - 42 reseñas</span>
+                    </div>
+                    
+                    <div class="price-section">
+                        <span class="current-price">$25.00</span>
+                        <span class="price-note">Precio especial para estudiantes del CETIS 145</span>
+                    </div>
+                    
+                    <div class="product-description">
+                        <p>Nuestro cuernito más intenso elaborado con masa hojaldrada horneada a la perfección, relleno con pollo desmenuzado perfectamente sazonado y nuestra salsa especial picante. Una explosión de sabores que combina la suavidad del pollo con el toque picante que tanto te gusta.</p>
+                        
+                        <div class="key-features">
+                            <div class="feature">
+                                <span class="feature-icon">🥖</span>
+                                <span>Masa hojaldrada casera</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon">🍗</span>
+                                <span>Pollo desmenuzado fresco</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon">🌶️</span>
+                                <span>Salsa picante especial</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon">⚡</span>
+                                <span>Listo para la entrega</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="order-section">
+                        <div class="quantity-selector">
+                            <label for="quantity">Cantidad:</label>
+                            <div class="quantity-controls">
+                                <button type="button" onclick="changeQuantity(-1)">-</button>
+                                <input type="number" id="quantity" value="1" min="1" max="10">
+                                <button type="button" onclick="changeQuantity(1)">+</button>
+                            </div>
+                        </div>
+                        
+                        <div class="order-buttons">
+                            <a href="cont.html" class="btn-primary">Ordenar Ahora</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ingredients-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ingredientes Frescos</h2>
+                <p>Cada ingrediente es seleccionado cuidadosamente para crear el sabor picante perfecto</p>
+            </div>
+            
+            <div class="ingredients-grid">
+                <div class="ingredient-card">
+                    <div class="ingredient-icon">🥖</div>
+                    <h3>Pan Hojaldrado</h3>
+                    <p>Masa casera horneada hasta lograr la textura suave y perfecta.</p>
+                </div>
+                
+                <div class="ingredient-card">
+                    <div class="ingredient-icon">🍗</div>
+                    <h3>Pollo Desmenuzado</h3>
+                    <p>Pollo fresco perfectamente cocido y desmenuzado, sazonado con especias especiales.</p>
+                </div>
+                
+                <div class="ingredient-card">
+                    <div class="ingredient-icon">🍅</div>
+                    <h3>Tomate Fresco</h3>
+                    <p>Tomates frescos que aportan jugosidad y sabor natural a nuestro relleno.</p>
+                </div>
+                
+                <div class="ingredient-card">
+                    <div class="ingredient-icon">🧅</div>
+                    <h3>Cebolla</h3>
+                    <p>Cebolla finamente picada que añade textura y sabor dulce que equilibra el picante.</p>
+                </div>
+                
+                <div class="ingredient-card">
+                    <div class="ingredient-icon">🧄</div>
+                    <h3>Ajo</h3>
+                    <p>Ajo fresco que intensifica el sabor y complementa perfectamente el pollo.</p>
+                </div>
+                
+                <div class="ingredient-card">
+                    <div class="ingredient-icon">🌶️</div>
+                    <h3>Chile Especial</h3>
+                    <p>Nuestra mezcla secreta de chiles que le da el toque picante característico.</p>
+                </div>
+                
+                <div class="ingredient-card">
+                    <div class="ingredient-icon">🧀</div>
+                    <h3>Queso Americano</h3>
+                    <p>Queso cremoso que se derrite perfectamente, suavizando el picante.</p>
+                </div>
+                
+                <div class="ingredient-card">
+                    <div class="ingredient-icon">🥄</div>
+                    <h3>Aderezo Especial</h3>
+                    <p>Nuestra receta secreta de aderezo que potencia todos los sabores.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="nutrition-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Información Nutricional</h2>
+                <p>Valores nutricionales por porción (1 cuernito - 125g aprox.)</p>
+            </div>
+            
+            <div class="nutrition-container">
+                <div class="nutrition-facts">
+                    <div class="nutrition-header">
+                        <h3>Información Nutricional</h3>
+                        <div class="serving-info">
+                            <p><strong>Tamaño de la porción:</strong> 1 cuernito (125g)</p>
+                            <p><strong>Porciones por envase:</strong> 1</p>
+                        </div>
+                    </div>
+                    
+                    <div class="nutrition-table">
+                        <div class="nutrition-row calories">
+                            <span class="nutrient">Calorías</span>
+                            <span class="value">295</span>
+                        </div>
+                        
+                        <div class="nutrition-divider"></div>
+                        
+                        <div class="nutrition-row">
+                            <span class="nutrient">Grasa Total</span>
+                            <span class="value">14g</span>
+                            <span class="daily-value">22%</span>
+                        </div>
+                        
+                        <div class="nutrition-row sub">
+                            <span class="nutrient">Grasa Saturada</span>
+                            <span class="value">5g</span>
+                            <span class="daily-value">25%</span>
+                        </div>
+                        
+                        <div class="nutrition-row sub">
+                            <span class="nutrient">Grasa Trans</span>
+                            <span class="value">0g</span>
+                        </div>
+                        
+                        <div class="nutrition-row">
+                            <span class="nutrient">Colesterol</span>
+                            <span class="value">55mg</span>
+                            <span class="daily-value">18%</span>
+                        </div>
+                        
+                        <div class="nutrition-row">
+                            <span class="nutrient">Sodio</span>
+                            <span class="value">480mg</span>
+                            <span class="daily-value">21%</span>
+                        </div>
+                        
+                        <div class="nutrition-row">
+                            <span class="nutrient">Carbohidratos Totales</span>
+                            <span class="value">24g</span>
+                            <span class="daily-value">9%</span>
+                        </div>
+                        
+                        <div class="nutrition-row sub">
+                            <span class="nutrient">Fibra Dietética</span>
+                            <span class="value">3g</span>
+                            <span class="daily-value">11%</span>
+                        </div>
+                        
+                        <div class="nutrition-row sub">
+                            <span class="nutrient">Azúcares</span>
+                            <span class="value">4g</span>
+                        </div>
+                        
+                        <div class="nutrition-row">
+                            <span class="nutrient">Proteína</span>
+                            <span class="value">18g</span>
+                            <span class="daily-value">36%</span>
+                        </div>
+                        
+                        <div class="nutrition-divider"></div>
+                        
+                        <div class="nutrition-row">
+                            <span class="nutrient">Vitamina A</span>
+                            <span class="daily-value">12%</span>
+                        </div>
+                        
+                        <div class="nutrition-row">
+                            <span class="nutrient">Vitamina C</span>
+                            <span class="daily-value">15%</span>
+                        </div>
+                        
+                        <div class="nutrition-row">
+                            <span class="nutrient">Calcio</span>
+                            <span class="daily-value">10%</span>
+                        </div>
+                        
+                        <div class="nutrition-row">
+                            <span class="nutrient">Hierro</span>
+                            <span class="daily-value">12%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="nutrition-footer">
+                        <p><small>* Los valores diarios porcentuales están basados en una dieta de 2,000 calorías. Sus valores diarios pueden ser mayores o menores dependiendo de sus necesidades calóricas.</small></p>
+                    </div>
+                </div>
+                
+                <div class="nutrition-highlights">
+                    <h3>Beneficios Nutricionales</h3>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-icon">💪</div>
+                        <div class="benefit-content">
+                            <h4>Excelente Fuente de Proteínas</h4>
+                            <p>18g de proteína por porción, perfecto para el desarrollo muscular y energía prolongada.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🌶️</div>
+                        <div class="benefit-content">
+                            <h4>Propiedades del Picante</h4>
+                            <p>Los chiles aportan capsaicina, que acelera el metabolismo y tiene propiedades antioxidantes.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🍅</div>
+                        <div class="benefit-content">
+                            <h4>Rico en Vitamina C</h4>
+                            <p>15% del valor diario de vitamina C gracias al tomate fresco, fortalece el sistema inmune.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-icon">⚡</div>
+                        <div class="benefit-content">
+                            <h4>Energía Balanceada</h4>
+                            <p>Combinación perfecta de proteínas y carbohidratos para mantener la energía durante el día.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>¿Listo para el desafío picante?</h2>
+                <p>Ordena tu Cuernito de Pollo Picante ahora y experimenta la perfecta combinación de sabor y picante</p>
+                <div class="cta-buttons">
+                    <a href="cont.html" class="btn-primary">Hacer Pedido</a>
+                    <a href="pro.html" class="btn-secondary">Ver Más Productos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h4>Volocuernitos</h4>
+                    <p>Emprendimiento dedicado a la elaboración de cuernitos con recetas únicas y deliciosas.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="pro.html">Productos</a></li>
+                        <li><a href="cont.html">Contacto</a></li>
+                        <li><a href="sos.html">Socios</a></li>
+                        <li><a href="pre.html">Preguntas</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contacto</h4>
+                    <ul class="footer-links">
+                        <li><a>Email: volocuernitos@gmail.com</a></li>
+                        <li><a>Teléfono: +52 921 470 7640</a></li>
+                        <li><a>Dirección: CETIS 145 MTZ de la Torre, Ver.</a></li>
+                        <li><a>Horario: Lun-Vie 8:00am -14:00pm</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 Volocuernitos - Todos los derechos reservados | Emprendimiento CETIS145</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Menu toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('active');
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Image gallery
+        function changeImage(thumbnail) {
+            const mainImage = document.getElementById('mainImage');
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            
+            thumbnails.forEach(thumb => thumb.classList.remove('active'));
+            thumbnail.classList.add('active');
+            mainImage.src = thumbnail.src;
+        }
+        
+        // Quantity controls
+        function changeQuantity(change) {
+            const quantityInput = document.getElementById('quantity');
+            let currentValue = parseInt(quantityInput.value);
+            let newValue = currentValue + change;
+            
+            if (newValue >= 1 && newValue <= 10) {
+                quantityInput.value = newValue;
+            }
+        }
+        
+        // Scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const animElements = document.querySelectorAll('.ingredient-card, .nutrition-facts, .nutrition-highlights, .benefit-item');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s ease-out';
+                observer.observe(el);
+            });
+        });
+    </script>
+
+    <style>
+        /* Product Detail Specific Styles */
+        .product-detail-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .product-detail-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+        
+        .product-gallery {
+            position: sticky;
+            top: 100px;
+        }
+        
+        .main-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        .main-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        
+        .image-thumbnails {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 12px;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+        
+        .thumbnail.active,
+        .thumbnail:hover {
+            opacity: 1;
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+        
+        .product-details h1 {
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .stars {
+            color: #ffd700;
+            font-size: 1.2rem;
+        }
+        
+        .rating-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .price-section {
+            margin-bottom: 30px;
+        }
+        
+        .current-price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: block;
+        }
+        
+        .price-note {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+        
+        .product-description {
+            margin-bottom: 40px;
+        }
+        
+        .product-description p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+        
+        .key-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background-color: var(--light);
+            border-radius: 10px;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+        
+        .feature-icon {
+            font-size: 1.2rem;
+        }
+        
+        .order-section {
+            border-top: 2px solid var(--light);
+            padding-top: 30px;
+        }
+        
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .quantity-selector label {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .quantity-controls button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        
+        .quantity-controls button:hover {
+            background-color: var(--dark);
+        }
+        
+        .quantity-controls input {
+            border: none;
+            padding: 10px 15px;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            width: 60px;
+        }
+        
+        .order-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn-primary,
+        .btn-whatsapp {
+            flex: 1;
+            padding: 18px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 0, 0, 0.4);
+        }
+        
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .btn-whatsapp:hover {
+            background-color: #20BA5A;
+            transform: translateY(-2px);
+        }
+        
+        /* Ingredients Section */
+        .ingredients-section {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+        
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .ingredient-card {
+            background-color: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .ingredient-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .ingredient-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .ingredient-card h3 {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .ingredient-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        /* Nutrition Section */
+        .nutrition-section {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .nutrition-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
+            margin-top: 50px;
+        }
+        
+        .nutrition-facts {
+            background-color: white;
+            border: 3px solid #000;
+            border-radius: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        .nutrition-header {
+            background-color: #000;
+            color: white;
+            padding: 20px;
+        }
+        
+        .nutrition-header h3 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .serving-info p {
+            margin: 5px 0;
+            font-size: 0.95rem;
+        }
+        
+        .nutrition-table {
+            padding: 20px;
+        }
+        
+        .nutrition-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .nutrition-row.calories {
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-bottom: 4px solid #000;
+            padding: 15px 0;
+        }
+        
+        .nutrition-row.sub {
+            padding-left: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .nutrition-divider {
+            height: 10px;
+            background-color: #000;
+            margin: 10px 0;
+        }
+        
+        .nutrient {
+            font-weight: 600;
+        }
+        
+        .value {
+            font-weight: bold;
+        }
+        
+        .daily-value {
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .nutrition-footer {
+            padding: 20px;
+            background-color: #f8f8f8;
+            border-top: 2px solid #000;
+        }
+        
+        .nutrition-highlights {
+            background-color: var(--light);
+            padding: 40px;
+            border-radius: 20px;
+            height: fit-content;
+        }
+        
+        .nutrition-highlights h3 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+        
+        .benefit-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            align-items: flex-start;
+        }
+        
+        .benefit-icon {
+            font-size: 2rem;
+            min-width: 40px;
+        }
+        
+        .benefit-content h4 {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .benefit-content p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .btn-secondary {
+            padding: 18px 40px;
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+    </style>
+</body>
+</html>
